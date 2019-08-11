@@ -1,6 +1,7 @@
 from bokeh.io import output_file, show
 from bokeh.plotting import figure
-from bokeh.layouts import column
+from bokeh.layouts import column, row, gridplot
+import baker
 
 
 def get_vars():
@@ -31,9 +32,19 @@ def hbar():
     return plot
 
 
-def bars():
+@baker.command
+def columns():
     show(column(vbar(), hbar()))
 
 
-if __name__ == '__main__':
-    bars()
+@baker.command
+def rows():
+    show(row(vbar(), hbar()))
+
+
+@baker.command
+def two_by_two():
+    show(column(row(vbar(), hbar()), row(hbar(), vbar())))
+
+
+baker.run()
