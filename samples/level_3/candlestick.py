@@ -31,8 +31,6 @@ def candlestick(range=100):
     )
 
 
-    plot.xaxis.major_label_orientation = pi/4
-#    plot.grid.grid_line_alpha=0.3
     plot.segment(df.Date, df.High, df.Date, df.Low, color="black")
     plot.vbar(x='Date', width=w, bottom='Open', top='Close', fill_color="#D5E1DD", line_color="black", source=df[inc])
     plot.vbar(x='Date', width=w, top='Open', bottom='Close', fill_color="#F2583E", line_color="black", source=df[dec])
